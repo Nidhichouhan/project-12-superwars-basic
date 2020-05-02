@@ -22,18 +22,55 @@ const PLAYERS = [
 ];
 
 // initialize players with image and strength
+// const initPlayers = (players) => {
+//     let detailedPlayers = [];
+//     // Create players using for loop
+//     for (var i = 0; i < players.length; i++) {
+//         if (i % 2 == 0)
+//             detailedPlayers[i] = {
+//                 name: players[i],
+//                 strength: 100,
+//                 image: "images/super-" + (i + 1) + ".png",
+//                 type: "hero",
+//             };
+//         else {
+//             detailedPlayers[i] = {
+//                 name: players[i],
+//                 strength: 100,
+//                 image: "images/super-" + (i + 1) + ".png",
+//                 type: "vilian",
+//             }
+//         };
+//         return detailedPlayers;
+//     }
+// Type your code here
 const initPlayers = (players) => {
     let detailedPlayers = [];
     // Create players using for loop
     // Type your code here
-
+    for (var i = 0; i < (players.length); i++) {
+        if (i % 2 == 0)
+            detailedPlayers[i] = {
+                name: players[i],
+                strength: 100,
+                image: "images/super-" + (i + 1) + ".png",
+                type: "hero"
+            }
+        else
+            detailedPlayers[i] = {
+                name: players[i],
+                strength: 100,
+                image: "images/super-" + (i + 1) + ".png",
+                type: "villian"
+            }
+    }
     return detailedPlayers;
 }
-
 // getting random strength
 const getRandomStrength = () => {
     // Return a random integer (0,100]
     // Note: You can use Math.random() and Math.ceil()
+    return Math.random(1, 100);
 }
 
 const buildPlayers = (players, type) => {
@@ -42,7 +79,15 @@ const buildPlayers = (players, type) => {
     // Loop through players and accumulate HTML template
     // depending of type of player(hero|villain)
     // Type your code here
+    for (var i = 0; i < players.length; i++) {
 
+        fragment =
+            `<div class="player">
+<img src="${players[i].image}" alt="">
+<div class="name">${players[i].name}</div>
+<div class="strength">${players[i].strength}</div>
+</div>`
+    }
     return fragment;
 }
 // Display players in HTML
